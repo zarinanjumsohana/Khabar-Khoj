@@ -1,18 +1,32 @@
 <!-- File: README.md | Owner: Leader | Project info -->
 # Khabar Khoj
 
-A premium steakhouse website with online ordering, live order tracking, table reservations, and a kitchen admin panel. Built as a group project for the Web Programming course.
+Khabar Khoj has two parts: a navigation website for finding nearby restaurants, and a full restaurant website for browsing the menu, ordering, and contacting the restaurant.
 
 ---
 
 ## Introduction
 
-Khabar Khoj presents a restaurant's story, menu, events, and ingredients in a dark, elegant design with animations, smooth transitions, and glassmorphism. Customers can browse dishes, place an order (dine in, pickup, or delivery), and follow its progress in real time. Staff manage everything from a single kitchen panel that tracks orders, tables, amounts, food status, and total earnings.
+### Part 1: Khabar Khoj (Navigation)
+Khabar Khoj is a location-based web app that helps users discover restaurants near them. It detects the user's location, shows nearby restaurants on an interactive map, and provides directions to the one they choose. Finding a good place to eat takes just a few clicks.
 
+### Part 2: Restaurant Website
+A complete website for a single restaurant. Visitors can explore the menu, add items to a cart, place an order online, and get in touch with the restaurant directly.
 ---
 
 ## Features
 
+(PART-1)
+**Navigator**
+-  Automatic detection of the user's current location
+-  Interactive map with nearby restaurant markers
+-  Distance shown for each restaurant
+-  Search restaurants by name or cuisine
+-  Filter by distance, rating, and cuisine type
+-  Turn-by-turn directions to the selected restaurant
+-  Restaurant detail card (address, phone, opening hours, rating)
+
+(PART-2)
 **Customer side**
 - Responsive pages with scroll animations, page transitions, and glassmorphism UI
 - Menu split into segments (Starters, Main Course, Desserts, Drinks, Set Menu)
@@ -50,6 +64,15 @@ Khabar Khoj presents a restaurant's story, menu, events, and ingredients in a da
 
 ## How It Works
 
+(PART-1)
+1. The user opens the website and allows location access.
+2. The browser's Geolocation API returns the user's coordinates.
+3. The app requests nearby restaurants from the backend using those coordinates.
+4. The backend queries the database and returns restaurants within the chosen radius.
+5. Results appear as markers on the map and as a list.
+6. The user selects a restaurant to view its details and get directions
+   
+(PART-2)
 1. The customer opens the **Menu** and picks a segment.
 2. Clicking a dish and pressing **Order** opens the order page.
 3. The customer selects quantity and **Dine In / Pickup / Delivery**, then checks out.
@@ -64,6 +87,28 @@ Khabar Khoj presents a restaurant's story, menu, events, and ingredients in a da
 
 ## System Structure
 
+(part-1)
+
+```
+khabar-khoj/
+├── client/                 # Frontend
+│   ├── index.html
+│   ├── css/
+│   ├── js/
+│   │   ├── map.js          # Map rendering & markers
+│   │   ├── location.js     # Geolocation handling
+│   │   └── api.js          # API calls
+│   └── assets/
+├── server/                 # Backend
+│   ├── routes/
+│   ├── controllers/
+│   ├── models/
+│   └── server.js
+└── README.md
+```
+
+---
+(PART-2)
 ```mermaid
 flowchart LR
     A[Customer Pages<br/>Home, Menu, Order, Reservation] --> B[API Layer<br/>api/*.js]
@@ -72,59 +117,6 @@ flowchart LR
     B --> E[(Firebase Firestore)]
     D --> F[Firebase Auth]
 ```
-
-Pages never talk to the database directly. They call functions in the `api/` folder, which read from and write to Firebase.
-
-### API functions
-
-| Function | File | Used by | Purpose |
-|----------|------|---------|---------|
-| `getMenu(category)` | `menu-api.js` | Menu page | Load dishes |
-| `createOrder(items, type, table)` | `order-api.js` | Checkout | Save a new order |
-| `listenToOrder(orderId)` | `tracking-api.js` | Tracking page | Live status updates |
-| `createReservation(data)` | `reservation-api.js` | Reservation page | Save a booking |
-| `listenToOrders()` | `kitchen-api.js` | Dashboard | Live list of all orders |
-| `updateStatus(orderId, status)` | `kitchen-api.js` | Dashboard | Change order status |
-| `getEarnings(range)` | `kitchen-api.js` | Earnings page | Sum totals of delivered orders |
-
-### Database collections
-
-| Collection | Main fields |
-|------------|-------------|
-| `menu` | name, category, price, description, image |
-| `orders` | items, quantity, total, type, table, status, createdAt |
-| `reservations` | name, phone, date, time, guests, note |
-
----
-
-## Folder Structure
-
-```
-KHABAR-KHOJ/
-├── index.html
-├── pages/
-│   ├── 01-home/
-│   ├── 02-story/
-│   ├── 03-menu/
-│   ├── 04-events-gallery/
-│   ├── 05-ingredients/
-│   └── 06-reservation-contact/
-├── ordering/          # order, cart, checkout, order-success
-├── tracking/          # customer order tracking
-├── kitchen/           # login, dashboard, earnings, reservations
-├── shared/
-│   ├── components/    # navbar, footer, toast, modal
-│   ├── css/           # variables, global, animations, glassmorphism
-│   └── js/            # common, scroll-animations, cart-store
-├── api/               # one file per feature
-├── database/          # firebase setup, seed data, rules
-├── assets/            # images, icons, logo, fonts, qr
-└── docs/              # requirements, design, API documentation
-```
-
-Each page folder holds its own `.html`, `.css`, and `.js` file with the same name.
-
----
 
 ## Tools and Technologies
 
@@ -140,21 +132,3 @@ Each page folder holds its own `.html`, `.css`, and `.js` file with the same nam
 | Design reference | Figma / dark steakhouse UI reference |
 
 ---
-
-## Team
-
-| Member | Responsibility |
-|--------|----------------|
-| Team Leader | Kitchen panel, earnings, database setup, final integration |
-| Member 2 | Shared design system, Home, Our Story |
-| Member 3 | Menu, food details, order tracking |
-| Member 4 | Ordering, cart, checkout |
-| Member 5 | Events/Gallery, Ingredients, Reservation and Contact |
-
----
-
----
-
-## Course
-
-Web Programming Laboratory, 3rd Year 1st Semester.
