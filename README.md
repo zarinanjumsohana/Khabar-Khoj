@@ -48,21 +48,6 @@ A complete website for a single resturant. Customers can explore the menu, add i
 
 ---
 
-## Pages
-
-| # | Page | Folder | Description |
-|---|------|--------|-------------|
-| 1 | Home | `pages/01-home` | Hero section with restaurant name, tagline, and Book a Table button |
-| 2 | Our Story | `pages/02-story` | Restaurant background and values |
-| 3 | Menu | `pages/03-menu` | Segmented menu, dish details, Order button |
-| 4 | Events & Gallery | `pages/04-events-gallery` | Upcoming events and photo gallery |
-| 5 | Ingredients | `pages/05-ingredients` | Showcase of the ingredients used |
-| 6 | Reservation & Contact | `pages/06-reservation-contact` | Table booking form, address, working hours, contact info |
-| 7 | Order, Cart, Checkout | `ordering/` | Quantity, order type, cart review, confirmation |
-| 8 | Order Tracking | `tracking/` | Live status of the customer's order |
-| 9 | Kitchen Panel | `kitchen/` | Login, dashboard, earnings, reservations |
-
----
 
 ## How It Works
 
