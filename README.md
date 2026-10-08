@@ -153,31 +153,6 @@ Each page folder holds its own `.html`, `.css`, and `.js` file with the same nam
 
 ---
 
-## Getting Started
-
-```bash
-git clone https://github.com/zarinanjumsohana/Khabar-Khoj.git
-cd Khabar-Khoj
-```
-
-Open `index.html` with the VS Code **Live Server** extension.
-
-### Git workflow
-
-- Each member works on their own branch, e.g. `feature/menu`, `feature/kitchen`.
-- Commit messages are short and in present tense: `Add menu page layout`.
-- Finished work is merged into `main` through a pull request.
-- Secrets such as Firebase keys go in `.env` and are never committed.
-
----
-
-## Naming Conventions
-
-- Folders and files: lowercase `kebab-case`
-- API files end with `-api.js`
-- Images: descriptive names such as `ribeye-steak.jpg`
-- Order statuses: `received`, `preparing`, `ready`, `delivered`
-
 ---
 
 ## Course
