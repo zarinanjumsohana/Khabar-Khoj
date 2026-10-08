@@ -11,7 +11,9 @@ Khabar Khoj has two parts: a navigation website for finding nearby restaurants, 
 Khabar Khoj is a location-based web app that helps users discover restaurants near them. It detects the user's location, shows nearby restaurants on an interactive map, and provides directions to the one they choose. Finding a good place to eat takes just a few clicks.
 
 ### Part 2: Restaurant Website
-A complete website for a single restaurant. Visitors can explore the menu, add items to a cart, place an order online, and get in touch with the restaurant directly.
+A complete website for a single resturant. Customers can explore the menu, add items to cart, place an order online and get in touch with the resturant directly.
+
+
 ---
 
 ## Features
